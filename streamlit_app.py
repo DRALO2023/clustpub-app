@@ -26,9 +26,9 @@ if authentication_status:
 
     with st.expander("🧠 Search Criteria Agreement", expanded=True):
         st.write("By using this tool, you agree to use PubMed data responsibly and comply with NCBI API guidelines.")
-        st.markdown("- Use your own email address for API identification.
+        st.markdown("""- Use your own email address for API identification.
 - Avoid excessive requests.
-- Results are for research purposes only.")
+- Results are for research purposes only.""")
 
     email = st.text_input("Enter your email (used for NCBI API)", value=config['email'], key="email")
 
