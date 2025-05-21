@@ -7,19 +7,19 @@ import sqlite3
 import pandas as pd
 import os
 
-
-
 # Load config
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = stauth.Authenticate(
-    config['credentials'], config['cookie']['name'],
-    config['cookie']['key'], config['cookie']['expiry_days']
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days']
 )
 
-# positional for name, keyword for location:
-name, authentication_status, username = authenticator.login('Login', location='main')
+# ✅ FIXED: use keyword arguments to avoid multiple values error
+name, authentication_status, username = authenticator.login(name='Login', location='main')
 
 if authentication_status:
     st.sidebar.success(f"Welcome {name}")
@@ -61,6 +61,7 @@ if authentication_status:
                 df = pd.read_sql("SELECT * FROM abstracts", conn)
                 csv = df.to_csv(index=False)
                 st.download_button("Download CSV", csv, file_name="abstracts.csv")
+
 else:
     if authentication_status is False:
         st.error("Username/password is incorrect")
