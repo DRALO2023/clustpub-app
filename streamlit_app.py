@@ -14,13 +14,13 @@ with open('config.yaml') as file:
 def create_users_table():
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
-    c.execute('''
+    c.execute("""
         CREATE TABLE IF NOT EXISTS users (
             username TEXT PRIMARY KEY,
             password_hash BLOB,
             email TEXT
         )
-    ''')
+    """)
     conn.commit()
     conn.close()
 
