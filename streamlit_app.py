@@ -3,11 +3,18 @@ from utils import search_pubmed, retrieve_abstracts, summarize_abstracts
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-st.write("streamlit-authenticator version:", stauth.__version__)
-
 import sqlite3
 import pandas as pd
 import os
+
+import subprocess
+
+version = subprocess.run(['pip', 'show', 'streamlit-authenticator'], capture_output=True, text=True)
+for line in version.stdout.split('\n'):
+    if line.startswith('Version:'):
+        st.write("streamlit-authenticator version:", line.split(' ')[1])
+        break
+
 
 # Load config
 with open('config.yaml') as file:
