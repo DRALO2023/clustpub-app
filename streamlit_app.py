@@ -7,14 +7,6 @@ import sqlite3
 import pandas as pd
 import os
 
-import subprocess
-
-version = subprocess.run(['pip', 'show', 'streamlit-authenticator'], capture_output=True, text=True)
-for line in version.stdout.split('\n'):
-    if line.startswith('Version:'):
-        st.write("streamlit-authenticator version:", line.split(' ')[1])
-        break
-
 
 # Load config
 with open('config.yaml') as file:
@@ -25,7 +17,7 @@ authenticator = stauth.Authenticate(
     config['cookie']['key'], config['cookie']['expiry_days']
 )
 
-name, authentication_status, username = authenticator.login('Login', location='main')
+name, authentication_status, username = authenticator.login('Login', 'main')
 
 if authentication_status:
     st.sidebar.success(f"Welcome {name}")
