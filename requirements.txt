@@ -1,5 +1,5 @@
-streamlit
-streamlit-authenticator
-PyYAML
-biopython
+streamlit==1.45.1
+streamlit-authenticator==0.4.2
+PyYAML==6.0.2
+biopython==1.85
 pandas
