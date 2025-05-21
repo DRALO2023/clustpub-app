@@ -1,0 +1,11 @@
+credentials:
+  usernames:
+    user1:
+      email: user@example.com
+      name: Example User
+      password: '$2b$12$KIX3AxsSgMBjKeJKX1/JMehTMCZLNBfBNFD0cX4P6MIayQCtyMQvq'  # password123
+cookie:
+  expiry_days: 30
+  key: some_signature_key
+  name: pubmed_cookie
+email: user@example.com

@@ -1,0 +1,6 @@
+streamlit
+streamlit-authenticator
+PyYAML
+biopython
+pandas
+sqlite3
