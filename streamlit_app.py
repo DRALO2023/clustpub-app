@@ -7,16 +7,6 @@ import sqlite3
 import pandas as pd
 import os
 
-import streamlit_authenticator as stauth
-import pkg_resources
-import streamlit as st
-
-# Show version in the sidebar or main app
-try:
-    version = pkg_resources.get_distribution("streamlit-authenticator").version
-    st.sidebar.info(f"🔐 Authenticator version: {version}")
-except Exception as e:
-    st.sidebar.warning(f"Could not get version: {e}")
 
 
 # Load config
