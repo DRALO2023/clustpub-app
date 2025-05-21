@@ -7,6 +7,11 @@ import sqlite3
 import pandas as pd
 import os
 
+import subprocess
+import streamlit as st
+
+version_info = subprocess.run(["pip", "show", "streamlit-authenticator"], capture_output=True, text=True)
+st.code(version_info.stdout)
 
 # Load config
 with open('config.yaml') as file:
