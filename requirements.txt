@@ -3,3 +3,13 @@ streamlit-authenticator==0.4.2
 PyYAML==6.0.2
 biopython==1.85
 pandas
+streamlit
+pandas
+numpy
+biopython
+scikit-learn
+transformers
+torch
+matplotlib
+seaborn
+tqdm
