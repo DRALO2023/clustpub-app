@@ -1,10 +1,3 @@
-import streamlit_authenticator as stauth
-import streamlit as st
-
-try:
-    st.write("Streamlit-Authenticator version:", stauth.__version__)
-except AttributeError:
-    st.write("Version attribute not found for streamlit-authenticator.")
 
 import streamlit as st
 from utils import search_pubmed, retrieve_abstracts, summarize_abstracts
@@ -27,7 +20,7 @@ authenticator = stauth.Authenticate(
 )
 
 # ✅ FIXED: use keyword arguments to avoid multiple values error
-name, authentication_status, username = authenticator.login('Login', 'main')
+name, authentication_status, username = authenticator.login('Login', 'sidebar')
 
 if authentication_status:
     st.sidebar.success(f"Welcome {name}")
