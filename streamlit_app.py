@@ -19,7 +19,7 @@ authenticator = stauth.Authenticate(
 )
 
 # positional for name, keyword for location:
-name, authentication_status, username = authenticator.login(name='Login', location='main')
+name, authentication_status, username = authenticator.login('Login', location='main')
 
 if authentication_status:
     st.sidebar.success(f"Welcome {name}")
