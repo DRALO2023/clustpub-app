@@ -3,6 +3,8 @@ from utils import search_pubmed, retrieve_abstracts, summarize_abstracts
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
+st.write("streamlit-authenticator version:", stauth.__version__)
+
 import sqlite3
 import pandas as pd
 import os
