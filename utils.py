@@ -39,6 +39,6 @@ def summarize_abstracts(db_path="abstracts.db"):
     conn.close()
 
     full_text = " ".join([a[0] for a in abstracts if a[0]])
-    return f"🧾 Summary of {len(abstracts)} abstracts:
+    return f"""🧾 Summary of {len(abstracts)} abstracts:
 
 {full_text[:1000]}..."
