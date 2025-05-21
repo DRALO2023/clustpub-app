@@ -1,3 +1,11 @@
+import streamlit_authenticator as stauth
+import streamlit as st
+
+try:
+    st.write("Streamlit-Authenticator version:", stauth.__version__)
+except AttributeError:
+    st.write("Version attribute not found for streamlit-authenticator.")
+
 import streamlit as st
 from utils import search_pubmed, retrieve_abstracts, summarize_abstracts
 import yaml
