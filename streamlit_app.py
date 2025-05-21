@@ -20,7 +20,7 @@ authenticator = stauth.Authenticate(
 )
 
 # ✅ FIXED: use keyword arguments to avoid multiple values error
-name, authentication_status, username = authenticator.login('Login')
+name, authentication_status, username = authenticator.login('Login', location='main')
 
 if authentication_status:
     st.sidebar.success(f"Welcome {name}")
