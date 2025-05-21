@@ -55,12 +55,33 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import zipfile
 
+from Bio import Entrez
+
 def search_pubmed(topic, email, retmax=100):
+    """
+    Search PubMed for a given topic and return a list of PubMed IDs.
+    Optionally, allow dynamic `retmax` based on total available abstracts.
+    """
     Entrez.email = email
+    
+    # Perform the initial search to get the total count
+    handle = Entrez.esearch(db="pubmed", term=topic, retmax=1)
+    record = Entrez.read(handle)
+    handle.close()
+    
+    # Get the total number of results
+    total_count = int(record["Count"])
+    
+    # Set retmax to the total count or user-defined retmax
+    retmax = min(retmax, total_count)  # Don't exceed the total available count
+    
+    # Now fetch the results with the correct `retmax`
     handle = Entrez.esearch(db="pubmed", term=topic, retmax=retmax)
     record = Entrez.read(handle)
     handle.close()
-    return record['IdList']
+    
+    return record['IdList'], total_count  # Return the IDs and total count
+
 
 def retrieve_abstracts(id_list, email, db_path="abstracts.db", batch_size=100):
     Entrez.email = email
