@@ -57,12 +57,20 @@ def summarize_abstracts(db_path="abstracts.db"):
     df['cluster'] = kmeans.fit_predict(X)
 
     feature_names = tfidf.get_feature_names_out()
+    # cluster_titles = {}
+    # for clus in range(5):
+    #     cluster_docs = X[df['cluster'] == clus]
+    #     mean = cluster_docs.mean(axis=0).A1
+    #     top_words = [feature_names[i] for i in mean.argsort()[::-1][:3]]
+    #     cluster_titles[clus] = ", ".join(top_words)
     cluster_titles = {}
     for clus in range(5):
-        cluster_docs = X[df['cluster'] == clus]
+        mask = (df['cluster'] == clus).values
+        cluster_docs = X[mask]
         mean = cluster_docs.mean(axis=0).A1
         top_words = [feature_names[i] for i in mean.argsort()[::-1][:3]]
         cluster_titles[clus] = ", ".join(top_words)
+
 
     summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
     summaries = []
