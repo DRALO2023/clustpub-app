@@ -66,7 +66,7 @@ def summarize_abstracts(db_path="abstracts.db"):
 
     tfidf = TfidfVectorizer(stop_words='english', max_features=1000)
     X = tfidf.fit_transform(df['abstract'])
-    kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
+    kmeans = KMeans(n_clusters=10, random_state=42, n_init=10)
     df['cluster'] = kmeans.fit_predict(X)
 
     feature_names = tfidf.get_feature_names_out()
