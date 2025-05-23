@@ -71,7 +71,7 @@ def summarize_abstracts(db_path="abstracts.db"):
 
     feature_names = tfidf.get_feature_names_out()
     cluster_titles = {}
-    for clus in range(5):
+    for clus in range(10):
         mask = (df['cluster'] == clus).values
         cluster_docs = X[mask]
         mean = cluster_docs.mean(axis=0).A1
