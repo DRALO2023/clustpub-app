@@ -64,14 +64,14 @@ def summarize_abstracts(db_path="abstracts.db"):
     df = pd.read_sql("SELECT * FROM abstracts", conn)
     conn.close()
 
-    tfidf = TfidfVectorizer(stop_words='english', max_features=1000)
+    tfidf = TfidfVectorizer(stop_words='english', max_features=00)
     X = tfidf.fit_transform(df['abstract'])
-    kmeans = KMeans(n_clusters=10, random_state=42, n_init=10)
+    kmeans = KMeans(n_clusters=5, random_state=42, n_init=5)
     df['cluster'] = kmeans.fit_predict(X)
 
     feature_names = tfidf.get_feature_names_out()
     cluster_titles = {}
-    for clus in range(10):
+    for clus in range(5):
         mask = (df['cluster'] == clus).values
         cluster_docs = X[mask]
         mean = cluster_docs.mean(axis=0).A1
