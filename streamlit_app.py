@@ -193,13 +193,13 @@ if st.session_state.logged_in:
     if st.sidebar.button("Logout"):
         for key in list(st.session_state.keys()):
             del st.session_state[key]
-        st.experimental_rerun()
+        st.rerun()
 
     if st.sidebar.button("New Search"):
         for key in list(st.session_state.keys()):
             if key not in ["logged_in", "username"]:
                 del st.session_state[key]
-        st.experimental_rerun()
+        st.rerun()
 
     st.sidebar.success(f"Logged in as {st.session_state.username}")
 
